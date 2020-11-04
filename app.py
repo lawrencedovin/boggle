@@ -4,7 +4,12 @@ from boggle import Boggle
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = "abc123"
-app.debug = False
+app.debug = True
 toolbar = DebugToolbarExtension(app)
 
 boggle_game = Boggle()
+
+@app.route('/')
+def show_board():
+    """Show boggle board"""
+    return render_template('game.html', boggle_game=boggle_game)
