@@ -1,6 +1,16 @@
-{% extends 'base.html' %}
-{% block content %}
-<!-- {{ session['game_board'] }} -->
-{{session['game_board']}}
-<a href="/test">CLICKKK ME</a>
+{% extends 'base.html' %} 
+{% block content %} 
+<table style="width:100%">
+    {% for row in session['game_board'] %}
+    <tr>
+      <td>{{row}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+<!-- {{session['game_board'][0]}} -->
+<form action="/test">
+  <label for="guess">Guess Word</label>
+  <input type="text" name="guess" />
+  <button>Click me</button>
+</form>
 {% endblock %}
