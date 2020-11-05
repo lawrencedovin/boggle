@@ -1,7 +1,7 @@
 const $form = $('form');
 let $guessInput = $('#guess-input');
 let currentScore = 0;
-let seconds = 60;
+let seconds = 5;
 
 async function checkGuess() {
     let guess = $guessInput.val();
@@ -36,7 +36,11 @@ $form.on('submit', (e) => {
 })
 
 window.onload = function(){
-    setInterval(function() {
+    let countdown = setInterval(function() {
+        if(seconds === 0) {
+            alert('Times up!');
+            clearInterval(countdown);
+        } 
         console.log(`${seconds}`);
         seconds--;
     }, 1000);
