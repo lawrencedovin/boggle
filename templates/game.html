@@ -1,16 +1,18 @@
 {% extends 'base.html' %} 
-{% block content %} 
-<table style="width:100%">
-    {% for row in session['game_board'] %}
-    <tr>
-      <td>{{row}}</td>
-    </tr>
-    {% endfor %}
-  </table>
+{% block content %}
+<table style="width: 100%">
+  {% for row in session['game_board'] %}
+  <tr>
+    <td>{{row}}</td>
+  </tr>
+  {% endfor %}
+</table>
 <!-- {{session['game_board'][0]}} -->
-<form action="/check-answer">
+<!-- <form action="/check-answer"> -->
+<form action="#">
   <label for="guess">Guess Word</label>
   <input type="text" name="guess" />
-  <button>Click me</button>
 </form>
+
+<button id="guess-button">Click me</button>
 {% endblock %}
