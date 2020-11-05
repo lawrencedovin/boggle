@@ -1,23 +1,29 @@
 const $form = $('form');
 let $guessButton = $('#guess-button');
 let $guessInput = $('#guess-input');
+let currentScore = 0;
 
 async function checkGuess() {
     let guess = $guessInput.val();
     try {
         const response = await axios.get('/check-guess', { params: { guess: guess }});
         const {data} = response;
-        appendResultToView(data.result);
+        appendResultsToView(data.result, guess);
     } catch (e) {
         alert(`Error: ${e}`);
     }
 }
 
-function appendResultToView(result) {
+function appendResultsToView(result, guess) {
     const $result = $('#result');
-    if(result === 'ok') $result.text('Correct!');
+    const $currentScore = $('#current-score');
+    if(result === 'ok'){ 
+        $result.text('Correct!'); 
+        currentScore += (guess.length * 10);
+        $currentScore.text(currentScore)
+    }
     else if(result === 'not-on-board') $result.text('Not on board');
-    else $result.text('Not a word')
+    else $result.text('Not a word');
 }
 
 $form.on('submit', (e) => {
