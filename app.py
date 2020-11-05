@@ -14,11 +14,18 @@ boggle_game = Boggle()
 def show_board():
     """Show boggle board"""
     session['game_board'] = boggle_game.make_board()
-
     return render_template('game.html')
 
 # @app.route('/check-answer')
-# def show_test():
-#     guess = request.args['guess']
+# def check_answer():
+#     guess = 'cat'
 #     check_guess = boggle_game.check_valid_word(session['game_board'], guess)
-#     return render_template('check-answer.html', check_guess=check_guess)
+#     # guess = request.args['guess']
+#     # check_guess = boggle_game.check_valid_word(session['game_board'], guess)
+#     # return render_template('check-answer.html', check_guess=check_guess)
+#     return jsonify(guess=check_guess)
+
+@app.route('/check-answer')
+def check_answer():
+    check_guess = boggle_game.check_valid_word(session['game_board'], 'cell')
+    return jsonify({'result': check_guess})

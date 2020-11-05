@@ -2,12 +2,6 @@ const $form = $('form');
 let $guessButton = $('#guess-button');
 let $guessInput = $('#guess-input');
 
-
-// $guessButton.on('click', () => {
-//     let $guessInputValue = $guessInput.val();
-//     alert($guessInputValue);
-// })
-
 $form.on('submit', (e) => {
     e.preventDefault();
     let $guessInputValue = $guessInput.val();
@@ -18,21 +12,21 @@ $form.on('submit', (e) => {
     else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
 })
 
+async function getAxiosRequest() {
+    // try {
+    //     const url = 'http://127.0.0.1:5000/check-answer';
+    //     const res = await getAxiosRequest.get(url, {
+            
+    //     });
+    // } catch (e) {
+    //     alert(`Error: ${e}`);
+    // }
+    const response = axios.get('http://127.0.0.1:5000/check-answer');
+    const {data} = response;
+    // for(let i = 0; i < data.length; i++) {
+    //     console.log(data[i]);
+    // }
+    console.log(response)
+}
 
-
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-  
-    const newTask = document.createElement("li");
-    const deleteIcon = document.createElement("i");
-    const taskContent = document.createElement("p");
-  
-    taskContent.innerText = taskInput.value;
-    deleteIcon.classList.add("fas", "fa-times", "remove-button");
-    if($guessInput.val()){
-        alert
-    }
-    else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
-    
-    taskInput.value = '';
-  });
+getAxiosRequest();
