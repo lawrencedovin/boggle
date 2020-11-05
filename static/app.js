@@ -3,11 +3,11 @@ let $guessButton = $('#guess-button');
 let $guessInput = $('#guess-input');
 
 async function getAxiosRequest() {
-    let idk2 = $guessInput.val();
+    let guess = $guessInput.val();
     try {
-        const response = await axios.get('/check-guess', { params: { guess: idk2 }});
+        const response = await axios.get('/check-guess', { params: { guess: guess }});
         const {data} = response;
-        alert(data.result);
+        console.log(data.result);
     } catch (e) {
         alert(`Error: ${e}`);
     }
@@ -15,7 +15,9 @@ async function getAxiosRequest() {
 
 $form.on('submit', (e) => {
     e.preventDefault();
-    let $guessInputValue = $guessInput.val();
-    if($guessInputValue) getAxiosRequest();
+    if($guessInput.val()) {
+        getAxiosRequest();
+        $guessInput.val('');
+    }
     else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
 })
