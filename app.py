@@ -16,16 +16,8 @@ def show_board():
     session['game_board'] = boggle_game.make_board()
     return render_template('game.html')
 
-# @app.route('/check-answer')
-# def check_answer():
-#     guess = 'cat'
-#     check_guess = boggle_game.check_valid_word(session['game_board'], guess)
-#     # guess = request.args['guess']
-#     # check_guess = boggle_game.check_valid_word(session['game_board'], guess)
-#     # return render_template('check-answer.html', check_guess=check_guess)
-#     return jsonify(guess=check_guess)
-
-@app.route('/check-answer')
+@app.route('/check-guess')
 def check_answer():
-    check_guess = boggle_game.check_valid_word(session['game_board'], 'cell')
+    guess = request.args['guess']
+    check_guess = boggle_game.check_valid_word(session['game_board'], guess)
     return jsonify({'result': check_guess})
