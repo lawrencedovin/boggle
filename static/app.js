@@ -13,20 +13,13 @@ $form.on('submit', (e) => {
 })
 
 async function getAxiosRequest() {
-    // try {
-    //     const url = 'http://127.0.0.1:5000/check-answer';
-    //     const res = await getAxiosRequest.get(url, {
-            
-    //     });
-    // } catch (e) {
-    //     alert(`Error: ${e}`);
-    // }
-    const response = axios.get('http://127.0.0.1:5000/check-answer');
-    const {data} = response;
-    // for(let i = 0; i < data.length; i++) {
-    //     console.log(data[i]);
-    // }
-    console.log(response)
+    try {
+        const response = await axios.get('/check-answer');
+        const {data} = response;
+        console.log(data)
+    } catch (e) {
+        alert(`Error: ${e}`);
+    }
 }
 
 getAxiosRequest();
