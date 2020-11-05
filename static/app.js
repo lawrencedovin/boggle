@@ -1,5 +1,6 @@
 const $form = $('form');
 let $guessInput = $('#guess-input');
+const $countdown = $('#countdown');
 let currentScore = 0;
 let seconds = 5;
 
@@ -7,8 +8,8 @@ async function checkGuess() {
     let guess = $guessInput.val();
     try {
         const response = await axios.get('/check-guess', { params: { guess: guess }});
-        const {data} = response;
-        appendResultsToView(data.result, guess);
+        const {result} = response.data; //result = response.data
+        appendResultsToView(result, guess);
     } catch (e) {
         alert(`Error: ${e}`);
     }
@@ -39,9 +40,10 @@ window.onload = function(){
     let countdown = setInterval(function() {
         if(seconds === 0) {
             alert('Times up!');
+            $guessInput.prop('disabled', true);
             clearInterval(countdown);
         } 
-        console.log(`${seconds}`);
+        $countdown.text(seconds)
         seconds--;
     }, 1000);
 };

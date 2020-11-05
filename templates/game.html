@@ -1,6 +1,6 @@
 {% extends 'base.html' %} 
 {% block content %}
-<table style="width: 100%">
+<table>
   {% for row in session['game_board'] %}
   <tr>
     <td>{{row}}</td>
@@ -9,9 +9,10 @@
 </table>
 <form action="/POST">
   <label for="guess">Guess Word</label>
-  <input type="text" name="guess" id="guess-input" />
+  <input type="text" name="guess" id="guess-input" autocomplete="off"/>
   <button id="guess-button">Click me</button>
 </form>
 <p id="result"></p>
 <p id="current-score"></p>
+<p id="countdown"></p>
 {% endblock %}
