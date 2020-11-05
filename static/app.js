@@ -1,7 +1,7 @@
 const $form = $('form');
-let $guessButton = $('#guess-button');
 let $guessInput = $('#guess-input');
 let currentScore = 0;
+let seconds = 60;
 
 async function checkGuess() {
     let guess = $guessInput.val();
@@ -34,3 +34,12 @@ $form.on('submit', (e) => {
     }
     else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
 })
+
+window.onload = function(){
+    setInterval(function() {
+        console.log(`${seconds}`);
+        seconds--;
+    }, 1000);
+};
+
+
