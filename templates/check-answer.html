@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+<table style="width:100%">
+    {% for row in session['game_board'] %}
+    <tr>
+      <td>{{row}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{{check_guess}}
+<a href="/">Play Again</a>
+{% endblock %}
