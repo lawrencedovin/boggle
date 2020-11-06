@@ -1,5 +1,6 @@
 const $form = $('form');
-let $guessInput = $('#guess-input');
+const $guessInput = $('#guess-input');
+const $guessButton = $('#guess-button');
 const $countdown = $('#countdown');
 let currentScore = 0;
 let seconds = 5;
@@ -40,7 +41,10 @@ window.onload = function(){
     let countdown = setInterval(function() {
         if(seconds === 0) {
             alert('Times up!');
+            // Clears input and disables input value and submit button
+            $guessInput.val('');
             $guessInput.prop('disabled', true);
+            $guessButton.prop('disabled', true);
             clearInterval(countdown);
         } 
         $countdown.text(seconds)
