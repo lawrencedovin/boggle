@@ -2,8 +2,11 @@ const $form = $('form');
 const $guessInput = $('#guess-input');
 const $guessButton = $('#guess-button');
 const $countdown = $('#countdown');
+const $currentScore = $('#current-score');
+const $highScore = $('#high-score');
+const $msg = $('#msg');
 let currentScore = 0;
-let seconds = 5;
+let seconds = 20;
 
 async function checkGuess() {
     let guess = $guessInput.val();
@@ -16,9 +19,17 @@ async function checkGuess() {
     }
 }
 
+async function scoreGame() {
+    const resp = await axios.post('/post-score', { score: currentScore });
+    if (resp.data.brokeRecord) {
+      $msg.text(`New record: ${currentScore}`);
+    } else {
+      $msg.text(`Final score: ${currentScore}`);
+    }
+  }
+
 function appendResultsToView(result, guess) {
     const $result = $('#result');
-    const $currentScore = $('#current-score');
     if(result === 'ok'){ 
         $result.text('Correct!'); 
         currentScore += (guess.length * 10);
@@ -37,7 +48,7 @@ $form.on('submit', (e) => {
     else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
 })
 
-window.onload = function(){
+async function countdown() {
     let countdown = setInterval(function() {
         if(seconds === 0) {
             alert('Times up!');
@@ -46,10 +57,16 @@ window.onload = function(){
             $guessInput.prop('disabled', true);
             $guessButton.prop('disabled', true);
             clearInterval(countdown);
+            // await scoreGame();
         } 
         $countdown.text(seconds)
         seconds--;
     }, 1000);
-};
+}
+
+$( document ).ready(countdown);
+
+
+
 
 

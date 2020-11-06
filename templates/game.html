@@ -1,7 +1,14 @@
 {% extends 'base.html' %} 
 {% block content %}
-<table>
+<!-- <table>
   {% for row in session['game_board'] %}
+  <tr>
+    <td>{{row}}</td>
+  </tr>
+  {% endfor %}
+</table> -->
+<table>
+  {% for row in board %}
   <tr>
     <td>{{row}}</td>
   </tr>
@@ -14,5 +21,8 @@
 </form>
 <p id="result"></p>
 <p id="current-score"></p>
+<!-- <p id="high-score">{{session['high']}}</p> -->
+<p id="high-score">High Score: {{ highscore }}</p>
 <p id="countdown"></p>
+<p id="msg"></p>
 {% endblock %}
