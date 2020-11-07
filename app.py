@@ -14,7 +14,10 @@ boggle_game = Boggle()
 def show_board():
     """Show boggle board"""
     session['game_board'] = boggle_game.make_board()
-    return render_template('game.html')
+    # Initiliazes highscore and games_played to 0 when board loads
+    highscore = session.get('highscore', 0)
+    games_played = session.get('games_played', 0)
+    return render_template('game.html', highscore=highscore, games_played=games_played)
 
 
 @app.route('/check-guess')
@@ -30,8 +33,8 @@ def post_score():
     score = request.json['score']
     highscore = session.get('highscore', 0)
     
-    amount_played = session.get('amount_played', 0)
-    session['amount_played'] = amount_played + 1
+    games_played = session.get('games_played', 0)
+    session['games_played'] = games_played + 1
 
     session['highscore'] = max(score, highscore)
 

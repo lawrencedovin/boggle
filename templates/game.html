@@ -12,11 +12,10 @@
   <input type="text" name="guess" id="guess-input" autocomplete="off"/>
   <button id="guess-button">Click me</button>
 </form>
-<p id="result"></p>
 <p id="current-score">Score: 0</p>
-<p id="high-score">High Score: {{ session['highscore'] }}</p>
-<p id="amount-played">Games Played: {{ session['amount_played'] }}</p>
-<p id="countdown"></p>
-<p id="msg"></p>
+<p id="high-score">High Score: {{ highscore }}</p>
+<p id="games-played">Games Played: {{ session['games_played'] }}</p>
+<p id="countdown">Timer: 60</p>
 <p id="correct-words">Correct Words: </p>
+<p id="result"></p>
 {% endblock %}

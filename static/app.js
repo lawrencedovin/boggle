@@ -4,11 +4,10 @@ const $guessButton = $('#guess-button');
 const $countdown = $('#countdown');
 const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
-const $amountPlayed = $('#amount-played');
-const $msg = $('#msg');
+const $result = $('#result');
 const $correctWords = $('#correct-words');
 let currentScore = 0;
-let seconds = 30;
+let seconds = 60;
 let words = [];
 
 async function checkGuess() {
@@ -23,7 +22,6 @@ async function checkGuess() {
 }
 
 function appendResultsToView(result, guess) {
-    const $result = $('#result');
     if(result === 'ok'){ 
         if(jQuery.inArray(guess, words) != -1) $result.text('You already guessed that word.');
         else {
@@ -31,7 +29,7 @@ function appendResultsToView(result, guess) {
             currentScore += (guess.length * 10);
             $currentScore.text(`Score: ${currentScore}`);
             words.push(guess);
-            $correctWords.text(`Correct words: [${words}]`);
+            $correctWords.text(`Correct words: ${words}`);
         }       
     }
     else if(result === 'not-on-board') $result.text('Not on board');
@@ -49,11 +47,11 @@ $form.on('submit', (e) => {
 
 async function scoreGame() {
     const resp = await axios.post('/post-score', { score: currentScore });
-    if (resp.data.brokeRecord) {
-      $msg.text(`New record: ${currentScore}`);
-    } else {
-      $msg.text(`Final score: ${currentScore}`);
-    }
+    if (resp.data.brokeRecord){
+        $result.text(`New record: ${currentScore}`);
+        $highScore.text(`High Score: ${currentScore}`);
+    } 
+    else $result.text(`Final score: ${currentScore}`);
   }
 
 function countdown() {
@@ -66,7 +64,7 @@ function countdown() {
             clearInterval(countdown);
             await scoreGame();
         } 
-        $countdown.text(seconds)
+        $countdown.text(`Timer: ${seconds}`)
         seconds--;
     }, 1000);
 }
