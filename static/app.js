@@ -48,10 +48,9 @@ $form.on('submit', (e) => {
 async function scoreGame() {
     const resp = await axios.post('/post-score', { score: currentScore });
     if (resp.data.brokeRecord){
-        $result.text(`New record: ${currentScore}`);
+        $result.text(`Great Job! New High Score: ${currentScore}`);
         $highScore.text(`High Score: ${currentScore}`);
     } 
-    else $result.text(`Final score: ${currentScore}`);
   }
 
 function countdown() {
