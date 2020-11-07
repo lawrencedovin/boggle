@@ -1,6 +1,11 @@
 {% extends 'base.html' %} 
+{% block title %}
+Boggle
+{% endblock %}
 {% block content %}
-<table>
+<h1 class="boggle-title">Boggle</h1>
+<p id="countdown">Timer: 60</p>
+<table class="boggle-board">
   {% for cell in session['game_board'] %}
   <tr>
     <td>{{cell}}</td>
@@ -15,7 +20,6 @@
 <p id="current-score">Score: 0</p>
 <p id="high-score">High Score: {{ highscore }}</p>
 <p id="games-played">Games Played: {{ games_played }}</p>
-<p id="countdown">Timer: 60</p>
 <p id="correct-words">Correct Words: </p>
 <p id="result"></p>
 {% endblock %}
