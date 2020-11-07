@@ -6,8 +6,10 @@ const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
 const $amountPlayed = $('#amount-played');
 const $msg = $('#msg');
+const $correctWords = $('#correct-words');
 let currentScore = 0;
-let seconds = 20;
+let seconds = 30;
+let words = [];
 
 async function checkGuess() {
     let guess = $guessInput.val();
@@ -23,9 +25,13 @@ async function checkGuess() {
 function appendResultsToView(result, guess) {
     const $result = $('#result');
     if(result === 'ok'){ 
-        $result.text('Correct!'); 
-        currentScore += (guess.length * 10);
-        $currentScore.text(`Score: ${currentScore}`)
+        // if(jQuery.inArray(guess, words) != -1){
+            $result.text('Correct!'); 
+            currentScore += (guess.length * 10);
+            $currentScore.text(`Score: ${currentScore}`);
+            words.push(guess);
+            $correctWords.text(`Correct words: [${words}]`);
+        // }
     }
     else if(result === 'not-on-board') $result.text('Not on board');
     else $result.text('Not a word');
