@@ -4,9 +4,10 @@ const $guessButton = $('#guess-button');
 const $countdown = $('#countdown');
 const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
+const $amountPlayed = $('#amount-played');
 const $msg = $('#msg');
 let currentScore = 0;
-let seconds = 60;
+let seconds = 20;
 
 async function checkGuess() {
     let guess = $guessInput.val();
