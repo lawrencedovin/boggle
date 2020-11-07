@@ -6,13 +6,13 @@ const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
 const $msg = $('#msg');
 let currentScore = 0;
-let seconds = 20;
+let seconds = 60;
 
 async function checkGuess() {
     let guess = $guessInput.val();
     try {
         const response = await axios.get('/check-guess', { params: { guess: guess }});
-        const {result} = response.data; //result = response.data
+        const {result} = response.data; 
         appendResultsToView(result, guess);
     } catch (e) {
         alert(`Error: ${e}`);
@@ -24,7 +24,7 @@ function appendResultsToView(result, guess) {
     if(result === 'ok'){ 
         $result.text('Correct!'); 
         currentScore += (guess.length * 10);
-        $currentScore.text(currentScore)
+        $currentScore.text(`Score: ${currentScore}`)
     }
     else if(result === 'not-on-board') $result.text('Not on board');
     else $result.text('Not a word');
@@ -41,7 +41,6 @@ $form.on('submit', (e) => {
 
 async function scoreGame() {
     const resp = await axios.post('/post-score', { score: currentScore });
-    // console.log(`I'm a score ${resp.data}`);
     if (resp.data.brokeRecord) {
       $msg.text(`New record: ${currentScore}`);
     } else {
@@ -49,8 +48,8 @@ async function scoreGame() {
     }
   }
 
-async function countdown() {
-    let countdown = setInterval(function() {
+function countdown() {
+    let countdown = setInterval(async function() {
         if(seconds === 0) {
             alert('Times up!');
             // Clears input and disables input value and submit button

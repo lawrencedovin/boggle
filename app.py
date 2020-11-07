@@ -28,8 +28,9 @@ def show_board():
     board = boggle_game.make_board()
     session['board'] = board
     highscore = session.get('highscore', 0)
+    nplays = session.get("nplays", 0)
 
-    return render_template('game.html', board=board, highscore=highscore)
+    return render_template('game.html', board=board, highscore=highscore, nplays=nplays)
 
 
 @app.route('/check-guess')
@@ -43,9 +44,11 @@ def check_answer():
 def post_score():
     """Receive score, update nplays, update high score if appropriate."""
 
-    score = request.json["score"]
+    score = request.json['score']
     highscore = session.get("highscore", 0)
+    nplays = session.get("nplays", 0)
 
+    session['nplays'] = nplays + 1
     session['highscore'] = max(score, highscore)
 
     return jsonify(brokeRecord=score > highscore)
