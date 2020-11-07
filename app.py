@@ -10,27 +10,16 @@ toolbar = DebugToolbarExtension(app)
 
 boggle_game = Boggle()
 
-# @app.route('/', methods=['GET', 'POST'])
-# def show_board():
-#     """Show boggle board"""
-#     # session['game_board'] = boggle_game.make_board()
-#     board = boggle_game.make_board()
-#     session['board'] = board
-#     highscore = session.get('highscore', 0)
-#     nplays = session.get("nplays", 0)
-
-#     return render_template('game.html', board=board, highscore=highscore, nplays=nplays)
-
 @app.route('/', methods=['GET', 'POST'])
 def show_board():
     """Show boggle board"""
-    # session['game_board'] = boggle_game.make_board()
-    board = boggle_game.make_board()
-    session['board'] = board
+    session['game_board'] = boggle_game.make_board()
+    # board = boggle_game.make_board()
+    # session['board'] = board
     highscore = session.get('highscore', 0)
     nplays = session.get("nplays", 0)
 
-    return render_template('game.html', board=board, highscore=highscore, nplays=nplays)
+    return render_template('game.html', highscore=highscore, nplays=nplays)
 
 
 @app.route('/check-guess')

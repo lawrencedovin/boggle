@@ -51,7 +51,6 @@ async function scoreGame() {
 function countdown() {
     let countdown = setInterval(async function() {
         if(seconds === 0) {
-            alert('Times up!');
             // Clears input and disables input value and submit button
             $guessInput.val('');
             $guessInput.prop('disabled', true);

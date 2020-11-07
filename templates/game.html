@@ -1,16 +1,9 @@
 {% extends 'base.html' %} 
 {% block content %}
-<!-- <table>
-  {% for row in session['game_board'] %}
-  <tr>
-    <td>{{row}}</td>
-  </tr>
-  {% endfor %}
-</table> -->
 <table>
-  {% for row in board %}
+  {% for cell in session['game_board'] %}
   <tr>
-    <td>{{row}}</td>
+    <td>{{cell}}</td>
   </tr>
   {% endfor %}
 </table>
