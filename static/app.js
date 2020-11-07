@@ -11,7 +11,7 @@ let seconds = 60;
 let words = [];
 
 async function checkGuess() {
-    let guess = $guessInput.val();
+    let guess = $guessInput.val().toLowerCase();
     try {
         const response = await axios.get('/check-guess', { params: { guess: guess }});
         const {result} = response.data; 
@@ -28,7 +28,7 @@ function appendResultsToView(result, guess) {
             $result.text('Correct!'); 
             currentScore += (guess.length * 10);
             $currentScore.text(`Score: ${currentScore}`);
-            words.push(guess);
+            words.push(guess.toUpperCase());
             $correctWords.text(`Correct words: ${words}`);
         }       
     }
@@ -38,7 +38,7 @@ function appendResultsToView(result, guess) {
 
 $form.on('submit', (e) => {
     e.preventDefault();
-    if($guessInput.val()) {
+    if($guessInput.val().toLowerCase()) {
         checkGuess();
         $guessInput.val('');
     }
