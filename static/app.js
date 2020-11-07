@@ -19,15 +19,6 @@ async function checkGuess() {
     }
 }
 
-async function scoreGame() {
-    const resp = await axios.post('/post-score', { score: currentScore });
-    if (resp.data.brokeRecord) {
-      $msg.text(`New record: ${currentScore}`);
-    } else {
-      $msg.text(`Final score: ${currentScore}`);
-    }
-  }
-
 function appendResultsToView(result, guess) {
     const $result = $('#result');
     if(result === 'ok'){ 
@@ -48,6 +39,16 @@ $form.on('submit', (e) => {
     else alert("🤠 Yeehaw, we decent folks don't like your no value round here.");
 })
 
+async function scoreGame() {
+    const resp = await axios.post('/post-score', { score: currentScore });
+    // console.log(`I'm a score ${resp.data}`);
+    if (resp.data.brokeRecord) {
+      $msg.text(`New record: ${currentScore}`);
+    } else {
+      $msg.text(`Final score: ${currentScore}`);
+    }
+  }
+
 async function countdown() {
     let countdown = setInterval(function() {
         if(seconds === 0) {
@@ -57,7 +58,7 @@ async function countdown() {
             $guessInput.prop('disabled', true);
             $guessButton.prop('disabled', true);
             clearInterval(countdown);
-            // await scoreGame();
+            await scoreGame();
         } 
         $countdown.text(seconds)
         seconds--;
