@@ -9,15 +9,19 @@
           <img class="countdown__img" src="/static/images/hourglass.svg" />
           <span class="countdown__text align-middle" id="countdown__text">60</span>
         </div>
-        <table class="boggle__board">
-          {% for row in session['game_board'] %}
-          <tr>
-            {% for piece in row %}
-            <td class="boggle__game-piece">{{piece}}</td>
+        <div class="boggle__board--container">
+          <table class="boggle__board">
+            {% for row in session['game_board'] %}
+            <tr>
+              {% for piece in row %}
+              <td class="boggle__board--game-piece-container">
+                <div class="boggle__board--game-piece d-flex justify-content-center align-items-center">{{piece}}</div>
+              </td>
+              {% endfor %}
+            </tr>
             {% endfor %}
-          </tr>
-          {% endfor %}
-        </table>
+          </table>
+        </div>
         <form class="guess" action="/POST">
           <label for="guess">Guess: </label>
           <input type="text" name="guess" id="guess__input" autocomplete="off" />
