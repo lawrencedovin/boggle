@@ -10,9 +10,11 @@
           <span class="countdown__text align-middle" id="countdown__text">60</span>
         </div>
         <table class="boggle__board">
-          {% for cell in session['game_board'] %}
+          {% for row in session['game_board'] %}
           <tr>
-            <td>{{cell}}</td>
+            {% for piece in row %}
+            <td class="boggle__game-piece">{{piece}}</td>
+            {% endfor %}
           </tr>
           {% endfor %}
         </table>
