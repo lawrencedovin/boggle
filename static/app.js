@@ -6,6 +6,7 @@ const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
 const $result = $('#result');
 const $correctWords = $('#correct-words');
+let seconds = 30;
 // let currentScore = 0;
 // let seconds = 30;
 // let words = [];
@@ -18,7 +19,8 @@ class Boggle {
         this.words = [];
         this.colors = ["#00ADD2", "#00FF0A"];
         // this.countdown();
-        $(document).ready(this.countdown);
+        // $(document).ready(this.countdown);
+        this.timer = setInterval(this.tick.bind(this), 1000);
         $(".guess").on("submit", this.FormSubmit.bind(this));
     }
 
@@ -65,31 +67,75 @@ class Boggle {
         }
     }
 
-    async scoreGame() {
-        const resp = await axios.post('/post-score', { score: this.currentScore });
-        if (resp.data.brokeRecord){
-            $('.result').removeClass('incorrect');
-            $('.result').addClass('broke-record');
-            this.changeColor(this.colors, 0);
-            $result.text(`👾 New High Score: ${this.currentScore} 👾`);
-            $highScore.text(`High Score: ${this.currentScore}`);
-        } 
-    }
+    // async scoreGame() {
+    //     const resp = await axios.post('/post-score', { score: this.currentScore });
+    //     if (resp.data.brokeRecord){
+            // $('.result').removeClass('incorrect');
+            // $('.result').addClass('broke-record');
+            // this.changeColor(this.colors, 0);
+            // $result.text(`👾 New High Score: ${this.currentScore} 👾`);
+            // $highScore.text(`High Score: ${this.currentScore}`);
+    //     } 
+    // }
+    // async scoreGame() {
+    //     const resp = await axios.post("/post-score", { score: this.currentScore });
+    //     if (resp.data.brokeRecord) {
+    //       console.log(`New record: ${this.currentScore}`);
+    //     } else {
+    //       console.log(`Final score: ${this.currentScore}`);
+    //     }
+    //   }
 
-    async countdown() {
-        let countdown = setInterval(async function() {
-            if(this.seconds === 0) {
-                // Clears input and disables input value and submit button
-                $guessInput.val('');
-                $guessInput.prop('disabled', true);
-                $guessButton.prop('disabled', true);
-                clearInterval(countdown);
-                await this.scoreGame();
-            } 
-            $countdown.text(`${this.seconds}`)
-            this.seconds--;
-        }, 1000);
+    // async countdown() {
+        
+    //     let countdown = setInterval(async function() {
+    //         if(seconds === 0) {
+    //             // Clears input and disables input value and submit button
+                // $guessInput.val('');
+                // $guessInput.prop('disabled', true);
+                // $guessButton.prop('disabled', true);
+                // clearInterval(countdown);
+                // await this.scoreGame();
+    //         } 
+    //         $countdown.text(`${seconds}`)
+    //         seconds--;
+    //     }, 1000);
+    // }
+      /* Update timer in DOM */
+
+  showTimer() {
+    $($countdown).text(this.seconds);
+  }
+
+  /* Tick: handle a second passing in game */
+
+  async tick() {
+    this.seconds -= 1;
+    this.showTimer();
+
+    if (this.seconds === 0) {
+      $guessInput.val('');
+      $guessInput.prop('disabled', true);
+      $guessButton.prop('disabled', true);
+      clearInterval(this.timer);
+      await this.scoreGame();
     }
+  }
+
+  /* end of game: score and update message. */
+
+  async scoreGame() {
+    const resp = await axios.post("/post-score", { score: this.currentScore });
+    if (resp.data.brokeRecord) {
+        $('.result').removeClass('incorrect');
+        $('.result').addClass('broke-record');
+        this.changeColor(this.colors, 0);
+        $result.text(`👾 New High Score: ${this.currentScore} 👾`);
+        $highScore.text(`High Score: ${this.currentScore}`);
+    } else {
+      console.log(`Final score: ${this.currentScore}`);
+    }
+  }
 
     changeColor(colors, i) {
         setInterval(() => {
@@ -101,7 +147,7 @@ class Boggle {
     
 }
 
-new Boggle();
+new Boggle(30);
 
 
 
