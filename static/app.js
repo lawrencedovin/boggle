@@ -28,7 +28,7 @@ function appendResultsToView(result, guess) {
             $result.text('Correct!'); 
             currentScore += (guess.length * 10);
             $currentScore.text(`Score: ${currentScore}`);
-            words.push(guess.toUpperCase());
+            words.push(guess);
             $correctWords.text(`Correct words: ${words}`);
         }       
     }
