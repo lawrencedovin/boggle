@@ -22,18 +22,26 @@ async function checkGuess() {
 }
 
 function appendResultsToView(result, guess) {
+    $('.result').css('display', 'inline-block');
     if(result === 'ok'){ 
-        if(jQuery.inArray(guess, words) != -1) $result.text('You already guessed that word.');
+        if(jQuery.inArray(guess.toUpperCase(), words) != -1){
+            $result.text('You already guessed that word.');
+            $('.result').addClass('incorrect');
+        }
         else {
             $result.text('Correct!'); 
             currentScore += (guess.length * 10);
             $currentScore.text(`Score: ${currentScore}`);
-            words.push(guess);
+            words.push(guess.toUpperCase());
             $correctWords.text(`Correct words: ${words}`);
-        }       
+            $('.result').removeClass('incorrect'); 
+        }      
     }
-    else if(result === 'not-on-board') $result.text('Not on board');
-    else $result.text('Not a word');
+    else {
+        if(result === 'not-on-board') $result.text('Not on board');
+        else $result.text('Not a word');
+        $('.result').addClass('incorrect');
+    }
 }
 
 $form.on('submit', (e) => {

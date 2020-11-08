@@ -15,7 +15,13 @@ body {
     font-family: 'Poppins', sans-serif;
     height: 100%;
     background: linear-gradient(180deg, #00ADD2 0%, #BA31D0 100%);
+    font-size: 2rem;
     color: #fff;
+}
+
+.guess__input, 
+.result {
+    border-radius: .2rem;
 }
 
 .boggle__title {
@@ -83,6 +89,7 @@ body {
 
 .guess__button, 
 .guess__button:hover {
+    font-size: 2rem;
     color: #fff;
 }
 
@@ -94,19 +101,7 @@ body {
     background: #008faf;
 }
 
-.current-score,
-.high-score,
-.games-played,
-.correct-words,
-.result,
-.guess__label,
-.guess__input,
-.guess__button {
-    font-size: 2rem;
-}
-
 .guess__input {
-    border-radius: .2rem;
     border: none;
     margin: 0 1rem;
 }
@@ -116,5 +111,22 @@ body {
 }
 
 .correct-words {
-    margin: 2rem;
+    margin: 2rem 0 4rem;
+}
+
+.result {
+    display: none;
+    background: #00FF0A;
+    margin-bottom: 0;
+    border-radius: 3rem;
+    border: 4px solid white;
+}
+
+.result__message {
+    margin: 0;
+    padding: 1rem 5rem;
+}
+
+.incorrect {
+    background: #B00D23;
 }
