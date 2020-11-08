@@ -60,7 +60,7 @@ async function scoreGame() {
         $('.result').removeClass('incorrect');
         $('.result').addClass('broke-record');
         changeColor(colors, 0);
-        $result.text(`New High Score: ${currentScore}`);
+        $result.text(`👾 New High Score: ${currentScore} 👾`);
         $highScore.text(`High Score: ${currentScore}`);
     } 
   }
