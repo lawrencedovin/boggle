@@ -7,8 +7,9 @@ const $highScore = $('#high-score');
 const $result = $('#result');
 const $correctWords = $('#correct-words');
 let currentScore = 0;
-let seconds = 60;
+let seconds = 30;
 let words = [];
+const colors = ["#00ADD2", "#00FF0A"];
 
 async function checkGuess() {
     let guess = $guessInput.val().toLowerCase();
@@ -56,7 +57,10 @@ $form.on('submit', (e) => {
 async function scoreGame() {
     const resp = await axios.post('/post-score', { score: currentScore });
     if (resp.data.brokeRecord){
-        $result.text(`Great Job! New High Score: ${currentScore}`);
+        $('.result').removeClass('incorrect');
+        $('.result').addClass('broke-record');
+        changeColor(colors, 0);
+        $result.text(`New High Score: ${currentScore}`);
         $highScore.text(`High Score: ${currentScore}`);
     } 
   }
@@ -75,6 +79,15 @@ function countdown() {
         seconds--;
     }, 1000);
 }
+
+function changeColor(colors, i) {
+    setInterval(() => {
+      $($result).css('color', colors[i]);
+      i++;
+      i %= colors.length;
+    }, 250);
+}
+
 
 $( document ).ready(countdown);
 
