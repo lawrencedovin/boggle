@@ -8,14 +8,32 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
+    height: 100%;
     background: linear-gradient(180deg, #00ADD2 0%, #BA31D0 100%);
     /* text-align: center; */
 }
 
-.boggle-title {
-    font-family: 'Oleo Script Swash Caps', cursive;
+.boggle__title,
+.countdown__text
+{
+    color: #fff;
 }
 
-.boggle-board {
+.boggle__title {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 8rem;
+}
+
+.boggle__board {
     margin: 0 auto;
+}
+
+.countdown__img {
+    height: 5rem;
+}
+
+.countdown__text {
+    font-size: 3rem;
+    display: inline-block;
+    width: 5rem;
 }

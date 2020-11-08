@@ -1,7 +1,7 @@
 const $form = $('form');
-const $guessInput = $('#guess-input');
-const $guessButton = $('#guess-button');
-const $countdown = $('#countdown');
+const $guessInput = $('#guess__input');
+const $guessButton = $('#guess__button');
+const $countdown = $('#countdown__text');
 const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
 const $result = $('#result');
@@ -63,7 +63,7 @@ function countdown() {
             clearInterval(countdown);
             await scoreGame();
         } 
-        $countdown.text(`Timer: ${seconds}`)
+        $countdown.text(`${seconds}`)
         seconds--;
     }, 1000);
 }
