@@ -23,15 +23,15 @@
           </table>
         </div>
         <form class="guess" action="/POST">
-          <label for="guess">Guess: </label>
-          <input type="text" name="guess" id="guess__input" autocomplete="off" />
-          <button id="guess__button">Click me</button>
+          <label for="guess" class="guess__label">Guess: </label>
+          <input type="text" name="guess" class="guess__input" id="guess__input" autocomplete="off" />
+          <button class="guess__button btn" id="guess__button">Confirm</button>
         </form>
-        <p id="current-score">Score: 0</p>
-        <p id="high-score">High Score: {{ highscore }}</p>
-        <p id="games-played">Games Played: {{ games_played }}</p>
-        <p id="correct-words">Correct Words:</p>
-        <p id="result"></p>
+        <p class="current-score" id="current-score">Score: 0</p>
+        <p class="high-score" id="high-score">High Score: {{ highscore }}</p>
+        <p class="games-played" id="games-played">Games Played: {{ games_played }}</p>
+        <p class="correct-words" id="correct-words">Correct Words:</p>
+        <p class="result" id="result"></p>
       </div>
   </div>
 </div>
