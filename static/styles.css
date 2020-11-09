@@ -83,12 +83,14 @@ body {
     margin: 5rem 0 2rem;
 }
 
-.guess__button, .guess__input {
+.guess__button, .reset__button, .guess__input {
     height: 4rem;
 }
 
 .guess__button, 
-.guess__button:hover {
+.guess__button:hover,
+.reset__button,
+.reset__button:hover {
     font-size: 2rem;
     color: #fff;
 }
@@ -99,6 +101,14 @@ body {
 
 .guess__button:hover {
     background: #008faf;
+}
+
+.reset__button {
+    background: #909090;
+}
+
+.reset__button:hover {
+    background: #7e7d7d;
 }
 
 .guess__input {

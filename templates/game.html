@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container d-flex flex-column min-vh-100 text-center">
   <div class="row flex-grow-1 justify-content-center align-items-center">
-      <div class="boggle col-md-12">
+      <div class="boggle col">
         <h1 class="boggle__title">Boggle</h1>
         <div class="countdown">
           <img class="countdown__img" src="/static/images/hourglass.svg" />
@@ -26,6 +26,7 @@
           <label for="guess" class="guess__label align-middle">Guess: </label>
           <input type="text" name="guess" class="guess__input align-middle" id="guess__input" autocomplete="off" />
           <button class="guess__button btn align-middle" id="guess__button">Confirm</button>
+          <button class="reset__button btn align-middle" id="reset__button" type="button">Reset</button>
         </form>
         <p>
           <span class="current-score" id="current-score">Score: 0</span>
@@ -35,6 +36,8 @@
         <p class="correct-words" id="correct-words">Correct Words:</p>
         <div class="result">
           <p class="result__message" id="result"></p>
+        </div>
+        <div>
         </div>
       </div>
   </div>

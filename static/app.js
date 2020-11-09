@@ -1,5 +1,6 @@
 const $guessInput = $('#guess__input');
 const $guessButton = $('#guess__button');
+const $resetButton = $('#reset__button');
 const $countdown = $('#countdown__text');
 const $currentScore = $('#current-score');
 const $highScore = $('#high-score');
@@ -15,6 +16,7 @@ class Boggle {
 
         this.countdown = setInterval(this.tick.bind(this), 1000);
         $(".guess").on("submit", this.FormSubmit.bind(this));
+        this.resetButtonClick();
     }
 
     async FormSubmit(e){
@@ -89,6 +91,14 @@ class Boggle {
           i++;
           i %= colors.length;
         }, 250);
+    }
+    
+    resetGame() {
+        location.reload();
+    }
+
+    resetButtonClick() {
+        $resetButton.on('click', this.resetGame);
     }
     
 }
