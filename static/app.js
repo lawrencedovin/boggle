@@ -8,7 +8,7 @@ const $result = $('#result');
 const $correctWords = $('#correct-words');
 
 class Boggle {
-    constructor(seconds = 60) {
+    constructor(seconds = 30) {
         this.seconds = seconds;
         this.currentScore = 0;
         this.words = [];
@@ -80,7 +80,7 @@ class Boggle {
         $('.result').removeClass('incorrect');
         $('.result').addClass('broke-record');
         this.changeHighScoreColor(this.colors, 0);
-        new Audio('static/highscore.mp3').play();
+        new Audio('static/congratulations.mp3').play();
         $result.text(`👾 New High Score: ${this.currentScore} 👾`);
         $highScore.text(`High Score: ${this.currentScore}`);
     } 
