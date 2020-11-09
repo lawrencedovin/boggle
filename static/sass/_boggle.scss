@@ -4,62 +4,61 @@
 }
 
 .boggle__title {
-    font-family: 'Oleo Script Swash Caps', cursive;
-    font-size: 6rem;
+    font-family: $font-title;
+    font-size: $font-size-largest;
 }
 
 .boggle__board--container {
     display: inline-block;
-    border: 2rem solid #00FF0A;
+    border: 2rem solid $color-green;
     border-radius: 2rem;
-    background: #00FF0A;
+    background: $color-green;
     filter: drop-shadow(16px 24px 4px rgba(0, 0, 0, 0.25));
-}
 
-.boggle__board {
-    margin: 0 auto;
-    border-collapse: separate;
-    border-spacing: .8rem;
-    background: #211F25;
-    border-radius: 20px;
-}
+    .boggle__board {
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: .8rem;
+        background: $color-black;
+        border-radius: 20px;
 
-.boggle__board--game-piece-container {
-    height: 5rem;
-    width: 5rem;
-    background: #FFFFFE;
-    box-shadow: inset 0px -16px 20px rgba(0, 0, 0, 0.3);
-    border-radius: .8rem;
-}
-.boggle__board--game-piece {
-    background: #FFFFFF;
-    box-shadow: inset 0px 8px 10px rgba(0, 0, 0, 0.2);
-    border-radius: 50%;
-    height: 4rem;
-    width: 4rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin: 0 auto;
-    color: #000;
+        &--game-piece-container {
+            height: 5rem;
+            width: 5rem;
+            background: $color-white;
+            box-shadow: inset 0px -16px 20px rgba(0, 0, 0, 0.3);
+            border-radius: .8rem;
+        }
+
+        &--game-piece {
+            background: $color-white;
+            box-shadow: inset 0px 8px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 50%;
+            height: 4rem;
+            width: 4rem;
+            font-size: $font-size-medium;
+            font-weight: bold;
+            margin: 0 auto;
+            color: $color-black;
+        }
+
+    }
+
 }
 
 .countdown {
     margin: 2rem 0 1rem;
-}
 
-.countdown__img {
-    height: 3.5rem;
-}
-
-.countdown__text {
-    font-size: 3rem;
-    font-weight: bold;
-    display: inline-block;
-    width: 5rem;
-}
-
-.guess {
-    margin: 5rem 0 2rem;
+    &__img {
+        height: 3.5rem;
+    }
+    
+    &__text {
+        font-size: $font-size-large;
+        font-weight: bold;
+        display: inline-block;
+        width: 5rem;
+    }
 }
 
 .guess__button, .reset__button, .guess__input {
@@ -70,29 +69,36 @@
 .guess__button:hover,
 .reset__button,
 .reset__button:hover {
-    font-size: 2rem;
-    color: #fff;
+    font-size: $font-size-smallest;
+    color: $color-white;
 }
 
-.guess__button {
-    background: #00ADD2;
-}
+.guess {
+    margin: 5rem 0 2rem;
 
-.guess__button:hover {
-    background: #008faf;
+    &__button {
+        background: $color-light-blue;
+
+        &:hover {
+            background: $color-dark-blue;
+        }
+
+    }
+
+    &__input {
+        border: none;
+        margin: 0 1rem;
+    }
+    
 }
 
 .reset__button {
-    background: #909090;
-}
+    background: $color-light-gray;
 
-.reset__button:hover {
-    background: #7e7d7d;
-}
+    &:hover {
+        background: $color-dark-gray;
+    }
 
-.guess__input {
-    border: none;
-    margin: 0 1rem;
 }
 
 .high-score{
@@ -105,7 +111,6 @@
 
 .result {
     display: none;
-    background: blue;
     margin-bottom: 0;
     font-weight: bold;
 }
@@ -116,12 +121,12 @@
 }
 
 .incorrect {
-    background: #B00D23;
+    background: $color-red;
 }
 
 .broke-record {
     background: none;
-    font-family: 'Press Start 2P', cursive;
-    color: #00ADD2;
-    text-shadow: 1px 1px #000000, 2px 2px #000000, 3px 3px #000000;
+    font-family: $font-highscore;
+    color: $color-light-blue;
+    text-shadow: 1px 1px $color-black, 2px 2px $color-black, 3px 3px $color-black;
 }
