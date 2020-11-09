@@ -80,6 +80,7 @@ class Boggle {
         $('.result').removeClass('incorrect');
         $('.result').addClass('broke-record');
         this.changeHighScoreColor(this.colors, 0);
+        new Audio('static/highscore.mp3').play();
         $result.text(`👾 New High Score: ${this.currentScore} 👾`);
         $highScore.text(`High Score: ${this.currentScore}`);
     } 
@@ -104,16 +105,3 @@ class Boggle {
 }
 
 new Boggle();
-
-
-
-
-
-
-
-
-
-
-
-
-
