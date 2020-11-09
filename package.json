@@ -1,0 +1,22 @@
+{
+  "name": "boggle",
+  "version": "1.0.0",
+  "description": "Boggle Game",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "node-sass static/sass/main.scss static/css/styles.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawrencedovin/boggle.git"
+  },
+  "author": "Lawrence",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lawrencedovin/boggle/issues"
+  },
+  "homepage": "https://github.com/lawrencedovin/boggle#readme",
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
+}
