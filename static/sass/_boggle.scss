@@ -1,24 +1,3 @@
-html {
-    box-sizing: border-box;
-    height: 100%;
-    width: 100%;
-    font-size: 80%;
-}
-  
-@media only screen and (max-width: 1920px) {
-    html {
-      font-size: 50%;
-    }
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    height: 100%;
-    background: linear-gradient(180deg, #00ADD2 0%, #BA31D0 100%);
-    font-size: 2rem;
-    color: #fff;
-}
-
 .guess__input, 
 .result {
     border-radius: .2rem;

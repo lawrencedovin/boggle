@@ -1,37 +1,45 @@
-// // COLOR VARIABLES
-// $color-white: #fff;
-// $color-black: #000;
-// $color-primary-blue: #08107F;
-// $color-yellow: #F7C600;
+// COLOR VARIABLES
+$color-white: #fff;
+$color-black: #000;
+$color-green: #00FF0A;
+$color-purple: #BA31D0;
+$color-light-blue: #00ADD2;
+$color-dark-blue: #008faf;
+$color-light-gray: #909090;
+$color-dark-gray: #7e7d7d;
 
-// // FONT VARIABLES
-// $font-primary: "B612", sans-serif;
+// FONT VARIABLES
+$font-primary: 'Poppins', sans-serif;
+$font-title: 'Oleo Script Swash Caps', cursive;
+$font-highscore: 'Press Start 2P', cursive;
 
-// // RESPONSIVE BREAKPOINTS
-// $bp-largest: 75em; // 1200px / 16 = 75em
-// $bp-large: 62.5em; // 1000px / 16 = 62.5em
-// $bp-medium: 50em; // 800px / 16 = 50em
-// $bp-small: 37.5em; // 600px / 16 = 37.5em
+// RESPONSIVE BREAKPOINTS
+$bp-largest: 120em; // 1920px / 16 = 75em
+$bp-large: 62.5em; // 1000px / 16 = 62.5em
+$bp-medium: 50em; // 800px / 16 = 50em
+$bp-small: 37.5em; // 600px / 16 = 37.5em
 
-// // FONT SIZE
-// $font-size-largest: 3rem;
-// $font-size-medium: 1.5rem;
-// $font-size-smallest: 1.25rem;
+// FONT SIZE
+$font-size-largest: 6rem;
+$font-size-large: 3rem;
+$font-size-medium: 2.5rem;
+$font-size-smallest: 2rem;
 
-// *,
-// *::before,
-// *::after {
-//     margin: 0;
-//     padding: 0;
-//     box-sizing: inherit;
-// }
+html {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    font-size: 80%;
 
-// html {
-//     box-sizing: border-box;
-//     font-size: 62.5%; /* 1rem = 10px, 10px/16px = 62.5% */
-//     max-height: 100vh;
+    @media only screen and (max-width: $bp-largest) {
+        font-size: 50%;
+    }
+}
 
-//     @media only screen and (max-width: $bp-largest) {
-//         font-size: 50%;
-//     }
-// }
+body {
+    font-family: $font-primary;
+    height: 100%;
+    background: linear-gradient(180deg, $color-light-blue 0%, $color-purple 100%);
+    font-size: $font-size-smallest;
+    color: $color-white;
+}
