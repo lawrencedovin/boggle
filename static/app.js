@@ -8,7 +8,7 @@ const $result = $('#result');
 const $correctWords = $('#correct-words');
 
 class Boggle {
-    constructor(seconds = 30) {
+    constructor(seconds = 60) {
         this.seconds = seconds;
         this.currentScore = 0;
         this.words = [];

@@ -12,9 +12,9 @@ boggle_game = Boggle()
 
 @app.route('/', methods=['GET', 'POST'])
 def show_board():
-    """Show boggle board"""
+    """Show boggle board and initiliazes first game of 
+        highscore and games_played to 0 when board loads"""
     session['game_board'] = boggle_game.make_board()
-    # Initiliazes highscore and games_played to 0 when board loads
     highscore = session.get('highscore', 0)
     games_played = session.get('games_played', 0)
     return render_template('game.html', highscore=highscore, games_played=games_played)
@@ -22,14 +22,14 @@ def show_board():
 
 @app.route('/check-guess')
 def check_answer():
+    """Checks if the guess is valid and returns appropiate json data"""
     guess = request.args['guess']
     check_guess = boggle_game.check_valid_word(session['game_board'], guess)
     return jsonify({'result': check_guess})
 
 @app.route('/post-score', methods=['POST'])
 def post_score():
-    """Receive score, update nplays, update high score if appropriate."""
-
+    """Receive score, update games played, update high score if appropriate."""
     score = request.json['score']
     highscore = session.get('highscore', 0)
     
