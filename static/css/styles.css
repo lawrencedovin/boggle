@@ -95,7 +95,8 @@ body {
 .result {
   display: none;
   margin-bottom: 0;
-  font-weight: bold; }
+  font-weight: bold;
+  background: #00ADD2; }
 
 .result__message {
   margin: 0;
